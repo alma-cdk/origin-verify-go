@@ -1,6 +1,5 @@
 //go:build !no_runtime_type_checking
 
-// Enforce origin traffic via CloudFront.
 package almacdkoriginverify
 
 import (

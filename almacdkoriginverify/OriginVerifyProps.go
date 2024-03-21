@@ -1,4 +1,3 @@
-// Enforce origin traffic via CloudFront.
 package almacdkoriginverify
 
 import (
@@ -16,15 +15,21 @@ type OriginVerifyProps struct {
 	// Experimental.
 	Origin interface{} `field:"required" json:"origin" yaml:"origin"`
 	// Metric name for the WebACL.
+	// Default: 'OriginVerifyWebAcl'.
+	//
 	// Experimental.
 	AclMetricName *string `field:"optional" json:"aclMetricName" yaml:"aclMetricName"`
 	// By default `x-origin-verify` is used.
 	//
 	// To override it, provide a value for
 	// this. Recommendation is to use something with a `x-` prefix.
+	// Default: 'x-origin-verify'.
+	//
 	// Experimental.
 	HeaderName *string `field:"optional" json:"headerName" yaml:"headerName"`
 	// Metric name for the allowed requests.
+	// Default: 'OriginVerifyAllowedRequests'.
+	//
 	// Experimental.
 	RuleMetricName *string `field:"optional" json:"ruleMetricName" yaml:"ruleMetricName"`
 	// Any additional rules to add into the created WAFv2 WebACL.
@@ -33,6 +38,8 @@ type OriginVerifyProps struct {
 	// The secret which is used to verify the CloudFront distribution.
 	//
 	// Optional: By default this construct will generate a `new Secret`.
+	// Default: new Secret().secretValue
+	//
 	// Experimental.
 	SecretValue awscdk.SecretValue `field:"optional" json:"secretValue" yaml:"secretValue"`
 }

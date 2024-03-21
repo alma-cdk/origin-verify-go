@@ -1,4 +1,3 @@
-// Enforce origin traffic via CloudFront.
 package almacdkoriginverify
 
 import (
@@ -15,6 +14,8 @@ type OriginVerify interface {
 	constructs.Construct
 	IVerification
 	// CloudFront Origin Custom Header name used in the WAFv2 WebACL verification.
+	// Default: 'x-origin-verify'.
+	//
 	// Experimental.
 	HeaderName() *string
 	// Secret Value used as the CloudFront Origin Custom Header value.
@@ -81,18 +82,18 @@ func (j *jsiiProxy_OriginVerify) Node() constructs.Node {
 //   const apiDomain: string; // TODO: implement the domain
 //
 //   const verification = new OriginVerify(this, 'OriginVerify', {
-//   origin: api.deploymentStage,
+//     origin: api.deploymentStage,
 //   });
 //
 //   new Distribution(this, 'CDN', {
-//   defaultBehavior: {
-//   origin: new HttpOrigin(apiDomain, {
-//   customHeaders: {
-//   [verification.headerName]: verification.headerValue,
-//   },
-//   protocolPolicy: OriginProtocolPolicy.HTTPS_ONLY,
-//   })
-//   },
+//     defaultBehavior: {
+//       origin: new HttpOrigin(apiDomain, {
+//         customHeaders: {
+//           [verification.headerName]: verification.headerValue,
+//         },
+//         protocolPolicy: OriginProtocolPolicy.HTTPS_ONLY,
+//       })
+//     },
 //   })
 //
 // Experimental.
@@ -125,18 +126,18 @@ func NewOriginVerify(scope constructs.Construct, id *string, props *OriginVerify
 //   const apiDomain: string; // TODO: implement the domain
 //
 //   const verification = new OriginVerify(this, 'OriginVerify', {
-//   origin: api.deploymentStage,
+//     origin: api.deploymentStage,
 //   });
 //
 //   new Distribution(this, 'CDN', {
-//   defaultBehavior: {
-//   origin: new HttpOrigin(apiDomain, {
-//   customHeaders: {
-//   [verification.headerName]: verification.headerValue,
-//   },
-//   protocolPolicy: OriginProtocolPolicy.HTTPS_ONLY,
-//   })
-//   },
+//     defaultBehavior: {
+//       origin: new HttpOrigin(apiDomain, {
+//         customHeaders: {
+//           [verification.headerName]: verification.headerValue,
+//         },
+//         protocolPolicy: OriginProtocolPolicy.HTTPS_ONLY,
+//       })
+//     },
 //   })
 //
 // Experimental.
@@ -152,8 +153,22 @@ func NewOriginVerify_Override(o OriginVerify, scope constructs.Construct, id *st
 
 // Checks if `x` is a construct.
 //
+// Use this method instead of `instanceof` to properly detect `Construct`
+// instances, even when the construct library is symlinked.
+//
+// Explanation: in JavaScript, multiple copies of the `constructs` library on
+// disk are seen as independent, completely different libraries. As a
+// consequence, the class `Construct` in each copy of the `constructs` library
+// is seen as a different class, and an instance of one class will not test as
+// `instanceof` the other class. `npm install` will not create installations
+// like this, but users may manually symlink construct libraries together or
+// use a monorepo tool: in those cases, multiple copies of the `constructs`
+// library can be accidentally installed, and `instanceof` will behave
+// unpredictably. It is safest to avoid using `instanceof`, and using
+// this type-testing method instead.
+//
 // Returns: true if `x` is an object created from a class which extends `Construct`.
-// Deprecated: use `x instanceof Construct` instead.
+// Experimental.
 func OriginVerify_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 

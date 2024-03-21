@@ -1,3 +1,4 @@
+// Enforce origin traffic via CloudFront.
 package almacdkoriginverify
 
 import (

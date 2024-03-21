@@ -1,4 +1,3 @@
-// Enforce origin traffic via CloudFront.
 package almacdkoriginverify
 
 import (
@@ -9,6 +8,8 @@ import (
 // Experimental.
 type IVerification interface {
 	// CloudFront Origin Custom Header name used in the WAFv2 WebACL verification.
+	// Default: 'x-origin-verify'.
+	//
 	// Experimental.
 	HeaderName() *string
 	// Secret Value used as the CloudFront Origin Custom Header value.
