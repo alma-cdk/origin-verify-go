@@ -1,10 +1,10 @@
 package almacdkoriginverify
 
 import (
-	_init_ "github.com/alma-cdk/origin-verify-go/almacdkoriginverify/v3/jsii"
+	_init_ "github.com/alma-cdk/origin-verify-go/almacdkoriginverify/jsii"
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
 
-	"github.com/alma-cdk/origin-verify-go/almacdkoriginverify/v3/internal"
+	"github.com/alma-cdk/origin-verify-go/almacdkoriginverify/internal"
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
