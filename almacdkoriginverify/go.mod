@@ -1,4 +1,4 @@
-module github.com/alma-cdk/origin-verify-go/almacdkoriginverify/v3
+module github.com/alma-cdk/origin-verify-go/almacdkoriginverify/v2
 
 go 1.25
 
